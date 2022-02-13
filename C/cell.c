@@ -3,7 +3,7 @@
 //컴파일 저장 ctrl + alt + S
 //컴파일 exe 실행 ctrl + alt + R
 
-void function_without_return;
+void function_without_return();
 int function_with_return();
 
 int main(void)
@@ -82,9 +82,8 @@ void function_without_return()
 {
 	printf("반환값이 없는 함수입니다.\n");
 }
-int function_with_return(int num)
+int function_with_return()
 {
 	printf("반환값이 있는 함수입니다.\n");
-	num = 10;
-	return num;
+	return 10;
 }
