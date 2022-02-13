@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <time.h> //난수 생성시 필요
-//컴파일 저장 ctrl + alt + S
+//컴파일 저장 ctrl + alt + C
 //컴파일 exe 실행 ctrl + alt + R
 
 void function_without_return();
