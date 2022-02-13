@@ -72,9 +72,11 @@ int main(void)
 	//function_without_return();
 
 	//반환값이 있는 함수
-	int ret = function_with_return();
-	printf("num은 %d입니다.",ret);
+	/*int ret = function_with_return();
+	printf("num은 %d입니다.",ret);*/
 	
+	
+
 	return 0;
 }
 
