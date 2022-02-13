@@ -2,6 +2,10 @@
 #include <time.h> //난수 생성시 필요
 //컴파일 저장 ctrl + alt + S
 //컴파일 exe 실행 ctrl + alt + R
+
+void function_without_return;
+int function_with_return();
+
 int main(void)
 {
 	//피라미드 쌓기
@@ -64,7 +68,23 @@ int main(void)
 	default : printf("학생이 아니십니다.\n"); break;
 	}*/
 
-	
+	//반환값이 없는 함수
+	//function_without_return();
 
+	//반환값이 있는 함수
+	int ret = function_with_return();
+	printf("num은 %d입니다.",ret);
+	
 	return 0;
+}
+
+void function_without_return()
+{
+	printf("반환값이 없는 함수입니다.\n");
+}
+int function_with_return(int num)
+{
+	printf("반환값이 있는 함수입니다.\n");
+	num = 10;
+	return num;
 }
