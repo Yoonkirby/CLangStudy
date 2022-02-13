@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <time.h> //난수 생성시 필요
-
+//컴파일 저장 ctrl + alt + S
+//컴파일 exe 실행 ctrl + alt + R
 int main(void)
 {
 	//피라미드 쌓기
@@ -8,12 +9,12 @@ int main(void)
 	printf("몇층을 쌓겠습니까?");
 	scanf_s("%d", &floor);
 	int i, j;
-	fori = 1; i <= floor; i++) {
-		forj = floor; i < j; j--)
+	for(i = 1; i <= floor; i++) {
+		for(j = floor; i < j; j--)
 		{
 			printf(" ");
 		}
-		forj = 0; j <i*2-1); j++)
+		for(j = 0; j <i*2-1; j++)
 		{
 			printf("*");
 		}
