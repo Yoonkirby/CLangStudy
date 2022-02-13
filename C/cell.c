@@ -8,7 +8,7 @@ int function_with_return();
 void function_with_params(int num1, int num2, int num3);
 int apple(int num, int eat);
 
-int main(void)
+int main_cell(void)//main없애기 _cell지우고 사용
 {
 	//피라미드 쌓기
 	/*int floor;
