@@ -1,11 +1,11 @@
 #include <stdio.h>
-#include <time.h> //ë‚œìˆ˜ ìƒì„±ì‹œ í•„ìš”
+#include <time.h> //³­¼ö »ı¼º½Ã ÇÊ¿ä
 
 int main(void)
 {
-	//í”¼ë¼ë¯¸ë“œ ìŒ“ê¸°
+	//ÇÇ¶ó¹Ìµå ½×±â
 	/*int floor;
-	printf("ëª‡ì¸µìœ¼ë¡œ ìŒ“ìœ¼ì‹œê² ìŠµë‹ˆê¹Œ?");
+	printf("¸îÃşÀ» ½×°Ú½À´Ï±î?");
 	scanf_s("%d", &floor);
 	int i, j;
 	fori = 1; i <= floor; i++) {
@@ -21,27 +21,27 @@ int main(void)
 	}*/
 
 
-	//srand(time(NULL)); // ë‚œìˆ˜ ì´ˆê¸°í™”
+	//srand(time(NULL)); //³­¼ö ÃÊ±âÈ­
 	//int num = rand() % 3 +1; // 1 ~ 3
 
-	/*printf("ë‚œìˆ˜ ì´ˆê¸°í™” ì´ì „\n");
+	/*printf("³­¼ö ÃÊ±âÈ­ ÀÌÀü\n");
 	forint i = 0; i < 10; i++)
 		printf("%d ", rand() % 10);
 
-	srand(time(NULL)); //ë‚œìˆ˜ ì´ˆê¸°í™”
-	printf("ë‚œìˆ˜ ì´ˆê¸°í™” ì´í›„\n");
+	srand(time(NULL)); //³­¼ö ÃÊ±âÈ­
+	printf("³­¼ö ÃÊ±âÈ­ ÀÌÀü\n");
 	for (int i = 0; i < 10; i++)
 		printf("%d ", rand() % 10);*/
 
 
-	//ê°€ìœ„ ë°”ìœ„ ë³´
+	//°¡À§ ¹ÙÀ§ º¸
 	/*srand(time(NULL));
-	int i = rand() % 3; // 0 ~ 2 ë°˜í™˜
+	int i = rand() % 3; // 0 ~ 2 ¹İÈ¯
 	switch (i) {
-	case 0:printf("ê°€ìœ„\n"); break; //break ì‚¬ìš© ì•ˆí•˜ë©´ ë°‘caseë“¤ë„ ì­‰ ì‹¤í–‰ë¨
-	case 1:printf("ë°”ìœ„\n"); break;
-	case 2:printf("ë³´\n"); break;
-	default:printf("ëª°ë¼ìš”\n"); break;
+	case 0:printf("°¡À§\n"); break; //break ¾øÀ»½Ã ¹Ø case ±îÁö Âß ½ÇÇà
+	case 1:printf("¹ÙÀ§\n"); break;
+	case 2:printf("º¸\n"); break;
+	default:printf("¸ô¶ó¿ä\n"); break;
 	}*/
 
 	
@@ -53,14 +53,14 @@ int main(void)
 	case 10:
 	case 11:
 	case 12:
-	case 13:printf("ì´ˆë“±í•™ìƒ ì…ë‹ˆë‹¤.\n"); break;
+	case 13:printf("ÃÊµîÇĞ»ı ÀÔ´Ï´Ù.\n"); break;
 	case 14:
 	case 15:
-	case 16:printf("ì¤‘í•™ìƒ ì…ë‹ˆë‹¤.\n"); break;
+	case 16:printf("ÁßÇĞ»ı ÀÔ´Ï´Ù.\n"); break;
 	case 17:
 	case 18:
-	case 19:printf("ê³ ë“±í•™ìƒ ì…ë‹ˆë‹¤.\n"); break;
-	default : printf("í•™ìƒì´ ì•„ë‹ˆì‹œë„¤ìš”\n"); break;
+	case 19:printf("°íµîÇĞ»ı ÀÔ´Ï´Ù.\n"); break;
+	default : printf("ÇĞ»ıÀÌ ¾Æ´Ï½Ê´Ï´Ù.\n"); break;
 	}*/
 
 	
