@@ -3,7 +3,7 @@
 void swap(int a, int b);
 void swap_addr(int * a, int * b);
 void changeArray(int * ptr);
-int main_pointer(void)
+int main(void)
 {
     /*//포인터
     int 철수 = 1;
