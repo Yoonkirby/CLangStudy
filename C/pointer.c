@@ -1,6 +1,9 @@
 #include <stdio.h>
 
-int main(void)
+void swap(int a, int b);
+void swap_addr(int * a, int * b);
+void changeArray(int * ptr);
+int main_pointer(void)
 {
     /*//포인터
     int 철수 = 1;
@@ -83,7 +86,56 @@ int main(void)
     printf("arr[0] 의 실제 값 : %d\n", *&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*&arr[0]);
     printf("arr[0] 의 실제 값 : %d\n", arr[0]); */
 
-    
+   /* int a = 10;
+    int b = 20;
+    printf("a의 주소 : %d\n", &a);
+    printf("b의 주소 : %d\n", &b);
+
+    // a와 b의 값을 바꾼다.
+    printf("Swap 함수 전 => a : %d, b : %d\n", a, b);
+    swap(a,b);
+    pritnf("Swap 함수 후 => a : %d, b : %d\n", a, b);
+    //값에 의한 복사(Call by Value) -> 값만 복사한다는 의미
+
+    //주소값을 넘기면? 메모리 공간에 있는 주소값 자체를 넘기면.... 철수네처럼
+    printf("(주소값 전달)Swap 함수 전 => a : %d, b : %d\n", a, b);
+    swap_addr(&a,&b);
+    pritnf("(주소값 전달)Swap 함수 후 => a : %d, b : %d\n", a, b);*/
+
+    //배열일 때, arr2 -> 주소
+    int arr2[3] = { 10, 20, 30};
+    //changeArray(arr2);
+    changeArray(&arr2[0]);
+    for(int i = 0; i<3; i++)
+    {
+        printf("%d\n",arr2[i]);
+    }
+    //scanf에서 &num과 같이 &를 사용하는 이유와 같다
 
     return 0;
+}
+
+void swap(int a, int b)
+{
+    printf("(Swap 함수 내) a의 주소 : %d\n", &a);
+    printf("(Swap 함수 내) b의 주소 : %d\n", &b);
+
+    int temp = a;
+    a = b;
+    b = temp;
+    printf("Swap 함수 내 => a : %d, b : %d\n");
+}
+void swap_addr(int * a, int * b)
+{
+    printf("(Swap 함수 내) a의 주소 : %d\n", &a);
+    printf("(Swap 함수 내) b의 주소 : %d\n", &b);
+
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+    printf("(주소값 전달)Swap 함수 내 => a : %d, b : %d\n");
+}
+void changeArray(int * ptr)
+{
+    ptr[2] = 50;
 }
