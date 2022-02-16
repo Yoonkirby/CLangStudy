@@ -1,18 +1,18 @@
 #include <stdio.h>
-#include <time.h> //³­¼ö »ı¼º½Ã ÇÊ¿ä
-//ÄÄÆÄÀÏ ÀúÀå ctrl + alt + C
-//ÄÄÆÄÀÏ exe ½ÇÇà ctrl + alt + R
+#include <time.h> //ë‚œìˆ˜ ìƒì„±ì‹œ í•„ìš”
+//ì»´íŒŒì¼ ì €ì¥ ctrl + alt + C
+//ì»´íŒŒì¼ exe ì‹¤í–‰ ctrl + alt + R
 
 void function_without_return();
 int function_with_return();
 void function_with_params(int num1, int num2, int num3);
 int apple(int num, int eat);
 
-int main_cell(void)//main¾ø¾Ö±â _cellÁö¿ì°í »ç¿ë
+int main_cell(void)//mainì—†ì• ê¸° _cellì§€ìš°ê³  ì‚¬ìš©
 {
-	//ÇÇ¶ó¹Ìµå ½×±â
+	//í”¼ë¼ë¯¸ë“œ ìŒ“ê¸°
 	/*int floor;
-	printf("¸îÃşÀ» ½×°Ú½À´Ï±î?");
+	printf("ëª‡ì¸µì„ ìŒ“ê² ìŠµë‹ˆê¹Œ?");
 	scanf_s("%d", &floor);
 	int i, j;
 	for(i = 1; i <= floor; i++) {
@@ -28,27 +28,27 @@ int main_cell(void)//main¾ø¾Ö±â _cellÁö¿ì°í »ç¿ë
 	}*/
 
 
-	//srand(time(NULL)); //³­¼ö ÃÊ±âÈ­
+	//srand(time(NULL)); //ë‚œìˆ˜ ì´ˆê¸°í™”
 	//int num = rand() % 3 +1; // 1 ~ 3
 
-	/*printf("³­¼ö ÃÊ±âÈ­ ÀÌÀü\n");
+	/*printf("ë‚œìˆ˜ ì´ˆê¸°í™” ì´ì „\n");
 	forint i = 0; i < 10; i++)
 		printf("%d ", rand() % 10);
 
-	srand(time(NULL)); //³­¼ö ÃÊ±âÈ­
-	printf("³­¼ö ÃÊ±âÈ­ ÀÌÀü\n");
+	srand(time(NULL)); //ë‚œìˆ˜ ì´ˆê¸°í™”
+	printf("ë‚œìˆ˜ ì´ˆê¸°í™” ì´ì „\n");
 	for (int i = 0; i < 10; i++)
 		printf("%d ", rand() % 10);*/
 
 
-	//°¡À§ ¹ÙÀ§ º¸
+	//ê°€ìœ„ ë°”ìœ„ ë³´
 	/*srand(time(NULL));
-	int i = rand() % 3; // 0 ~ 2 ¹İÈ¯
+	int i = rand() % 3; // 0 ~ 2 ë°˜í™˜
 	switch (i) {
-	case 0:printf("°¡À§\n"); break; //break ¾øÀ»½Ã ¹Ø case ±îÁö Âß ½ÇÇà
-	case 1:printf("¹ÙÀ§\n"); break;
-	case 2:printf("º¸\n"); break;
-	default:printf("¸ô¶ó¿ä\n"); break;
+	case 0:printf("ê°€ìœ„\n"); break; //break ì—†ì„ì‹œ ë°‘ case ê¹Œì§€ ì­‰ ì‹¤í–‰
+	case 1:printf("ë°”ìœ„\n"); break;
+	case 2:printf("ë³´\n"); break;
+	default:printf("ëª°ë¼ìš”\n"); break;
 	}*/
 
 	
@@ -60,30 +60,30 @@ int main_cell(void)//main¾ø¾Ö±â _cellÁö¿ì°í »ç¿ë
 	case 10:
 	case 11:
 	case 12:
-	case 13:printf("ÃÊµîÇĞ»ı ÀÔ´Ï´Ù.\n"); break;
+	case 13:printf("ì´ˆë“±í•™ìƒ ì…ë‹ˆë‹¤.\n"); break;
 	case 14:
 	case 15:
-	case 16:printf("ÁßÇĞ»ı ÀÔ´Ï´Ù.\n"); break;
+	case 16:printf("ì¤‘í•™ìƒ ì…ë‹ˆë‹¤.\n"); break;
 	case 17:
 	case 18:
-	case 19:printf("°íµîÇĞ»ı ÀÔ´Ï´Ù.\n"); break;
-	default : printf("ÇĞ»ıÀÌ ¾Æ´Ï½Ê´Ï´Ù.\n"); break;
+	case 19:printf("ê³ ë“±í•™ìƒ ì…ë‹ˆë‹¤.\n"); break;
+	default : printf("í•™ìƒì´ ì•„ë‹ˆì‹­ë‹ˆë‹¤.\n"); break;
 	}*/
 
-	//¹İÈ¯°ªÀÌ ¾ø´Â ÇÔ¼ö
+	//ë°˜í™˜ê°’ì´ ì—†ëŠ” í•¨ìˆ˜
 	//function_without_return();
 
-	//¹İÈ¯°ªÀÌ ÀÖ´Â ÇÔ¼ö
+	//ë°˜í™˜ê°’ì´ ìˆëŠ” í•¨ìˆ˜
 	/*int ret = function_with_return();
-	printf("numÀº %dÀÔ´Ï´Ù.",ret);*/
+	printf("numì€ %dì…ë‹ˆë‹¤.",ret);*/
 	
-	//ÆÄ¶ó¹ÌÅÍ(Àü´Ş°ª)°¡ ÀÖ´Â ÇÔ¼ö
+	//íŒŒë¼ë¯¸í„°(ì „ë‹¬ê°’)ê°€ ìˆëŠ” í•¨ìˆ˜
 	//function_with_params(35,27,111);
 
-	//ÆÄ¶ó¹ÌÅÍ(Àü´Ş°ª)µµ ¹Ş°í, ¹İÈ¯°ªÀÌ ÀÖ´Â ÇÔ¼ö
-	/*int ret = apple(5,3); //5°³ÀÇ »ç°ú Áß¿¡¼­ 3°³¸¦ ¸Ô¾ú¾î¿ä
-	printf("»ç°ú´Â %d°³ ³²¾Ò½À´Ï´Ù.\n",ret);*/
-	//printf("»ç°ú´Â %d°³ ³²¾Ò½À´Ï´Ù.\n",apple(5,3));
+	//íŒŒë¼ë¯¸í„°(ì „ë‹¬ê°’)ë„ ë°›ê³ , ë°˜í™˜ê°’ì´ ìˆëŠ” í•¨ìˆ˜
+	/*int ret = apple(5,3); //5ê°œì˜ ì‚¬ê³¼ ì¤‘ì—ì„œ 3ê°œë¥¼ ë¨¹ì—ˆì–´ìš”
+	printf("ì‚¬ê³¼ëŠ” %dê°œ ë‚¨ì•˜ìŠµë‹ˆë‹¤.\n",ret);*/
+	//printf("ì‚¬ê³¼ëŠ” %dê°œ ë‚¨ì•˜ìŠµë‹ˆë‹¤.\n",apple(5,3));
 
 	
 
@@ -92,19 +92,19 @@ int main_cell(void)//main¾ø¾Ö±â _cellÁö¿ì°í »ç¿ë
 
 void function_without_return()
 {
-	printf("¹İÈ¯°ªÀÌ ¾ø´Â ÇÔ¼öÀÔ´Ï´Ù.\n");
+	printf("ë°˜í™˜ê°’ì´ ì—†ëŠ” í•¨ìˆ˜ì…ë‹ˆë‹¤.\n");
 }
 int function_with_return()
 {
-	printf("¹İÈ¯°ªÀÌ ÀÖ´Â ÇÔ¼öÀÔ´Ï´Ù.\n");
+	printf("ë°˜í™˜ê°’ì´ ìˆëŠ” í•¨ìˆ˜ì…ë‹ˆë‹¤.\n");
 	return 10;
 }
 void function_with_params(int num1, int num2, int num3)
 {
-	printf("Àü´Ş°ªÀÌ ÀÖ´Â ÇÔ¼öÀÌ¸ç, Àü´Ş¹ŞÀº °ªÀº %d, %d, %d ÀÔ´Ï´Ù.\n",num1,num2,num3);
+	printf("ì „ë‹¬ê°’ì´ ìˆëŠ” í•¨ìˆ˜ì´ë©°, ì „ë‹¬ë°›ì€ ê°’ì€ %d, %d, %d ì…ë‹ˆë‹¤.\n",num1,num2,num3);
 }
 int apple(int num, int eat)
 {
-	printf("Àü´Ş°ª°ú ¹İÈ¯°ªÀÌ ÀÖ´Â ÇÔ¼öÀÔ´Ï´Ù.\n");
+	printf("ì „ë‹¬ê°’ê³¼ ë°˜í™˜ê°’ì´ ìˆëŠ” í•¨ìˆ˜ì…ë‹ˆë‹¤.\n");
 	return num - eat;
 }
