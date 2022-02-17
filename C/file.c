@@ -10,7 +10,7 @@ int main(void)
 
     //fputs, fgets 쌍
     char line[MAX]; //char line[10000]
-    FILE *file = fopen("c:\test1.txt","wb");
+    FILE *file = fopen("c:\\test1.txt","wb");
 
     return 0;
 }
