@@ -24,7 +24,7 @@ CAT cats[5];
 
 void initCats();
 
-int main()
+int main(void)
 {
     srand(time(NULL));
 

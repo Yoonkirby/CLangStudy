@@ -20,7 +20,7 @@ typedef struct Gameinformation //Gameinformation이 없어도 사용 가능
    struct Gameinfo * friendGame; //연관업체게임
 } GAME_INFO;
 
-int main()
+int main(void)
 {
    //[게임 출시]
    //이름 : 커비게임
