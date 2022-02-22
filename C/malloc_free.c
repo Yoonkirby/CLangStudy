@@ -40,6 +40,7 @@ int main(void)
     {
         printf("%d\n",*(pi+i));
     }
-
+    free(pi);
+    
     return 0;
 }
