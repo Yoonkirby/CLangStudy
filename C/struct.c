@@ -120,7 +120,7 @@ int main(void)
 
    GAME_INFO game2;
    game2.name = "한글 게임2";
-   game2.year = 2019
+   game2.year = 2019;
 
    return 0;
 }

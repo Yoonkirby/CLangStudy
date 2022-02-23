@@ -10,26 +10,36 @@ typedef struct NODE
 
 typedef struct ll
 {
-    int cnt;
+    int index;
     node *head;
     node *tail;
 }linked_list;
 
-linked_list *ll_creation()
+linked_list *ll_make()
 {
     linked_list *Link = (linked_list *)malloc(sizeof(linked_list));
-    Link->cnt = 0;
+    Link->index = 0;
     Link->head = NULL;
     Link->tail = NULL;
     return Link;
 }
 
+linked_list *node_make(int data)
+{
+    node *Node = (node *)malloc(sizeof(node));
+    Node->data = data;
+    Node->next = NULL;
+    return Node;
+}
+
 int main(void)
 {
-    linked_list *List = ll_creation();
-
-
-    int enter = 0;
+    int enter;
+    linked_list *List = ll_make();  //링크드 리스트 생성
+    printf("Set the initial Value : ");
+    scanf_s("%d",&enter); //첫번째 노드의 값을 입력받음
+    node *Node = node_make(enter);  //첫번째 노드 생성
+    enter = 0;
     while(1)
     {
         printf("Enter [ (1) Insert, (2) Delete, (3) Update, (4) Print, (5) Exit ] : ");
