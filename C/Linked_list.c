@@ -11,21 +11,23 @@ typedef struct NODE
 typedef struct ll
 {
     int cnt;
-    node head;
-    node tail;
+    node *head;
+    node *tail;
 }linked_list;
 
-linked_list ll_creation()
+linked_list *ll_creation()
 {
     linked_list *Link = (linked_list *)malloc(sizeof(linked_list));
     Link->cnt = 0;
     Link->head = NULL;
     Link->tail = NULL;
+    return Link;
 }
 
 int main(void)
 {
-    
+    linked_list *List = ll_creation();
+
 
     int enter = 0;
     while(1)
