@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-void ll_insert(), ll_delete(), ll_update(), ll_print(), ll_exit();
+void ll_insert(linked_list *LL), ll_delete(), ll_update(), ll_print(), ll_exit();
 
 typedef struct NODE //노드 구조체
 {
@@ -10,7 +10,7 @@ typedef struct NODE //노드 구조체
 
 typedef struct ll   //링크드리스트 구조체
 {
-    int index;
+    int cnt;
     node *head;
     node *tail;
 }linked_list;
@@ -18,7 +18,7 @@ typedef struct ll   //링크드리스트 구조체
 linked_list *ll_make()  //링크드리스트 생성 함수
 {
     linked_list *Link = (linked_list *)malloc(sizeof(linked_list));
-    Link->index = 0;
+    Link->cnt = 0;
     Link->head = NULL;  //초기화
     Link->tail = NULL;
     return Link;
@@ -39,22 +39,23 @@ int main(void)
     printf("Set the initial Value : ");
     scanf_s("%d",&enter); //첫번째 노드의 값을 입력받음
     node *Node = node_make(enter);  //첫번째 노드 생성
-    List->index = 1;
-    List->head = Node;  //첫번째 노드 연결
+    List->cnt++;    //카운트 갯수 증가
+    List->head = Node;  //헤드, 테일과 커서를 첫번째 노드에 연결
     List->tail = Node;
+    List->csr = Node;
     enter = 0;
     while(1)
     {
         printf("Enter [ (1) Insert, (2) Delete, (3) Update, (4) Print, (5) Exit ] : ");
         scanf_s("%d",&enter);
         if(enter == 1)
-            ll_insert;
+            ll_insert(List);
         else if(enter == 2)
-            ll_delete;
+            ll_delete();
         else if(enter == 3)
-            ll_update;
+            ll_update();
         else if(enter == 4)
-            ll_print;
+            ll_print();
         else if(enter == 5)
         {
             ll_exit();
@@ -66,10 +67,79 @@ int main(void)
     return 0;
 }
 
-void ll_insert()
+void ll_insert(linked_list *LL)
 {
-     node *ist = (node *)malloc(sizeof(node));
-     
+     node *tmp = (node *)malloc(sizeof(node));
+     int i = 0, index = 0, enter = 0, value = 0;
+     if(LL->head == LL->tail)
+    {
+        printf("What do you want put it in the front or the back of the first node?\n");
+        while(1)
+        {
+            printf("Enter [ (1) front, (2) back ] : ");
+            scanf_s("%d",&enter);
+            if(enter == 1 || enter == 2)
+            {
+                break;
+            }
+            printf("Enter Again(1 or 2)\n");
+        }
+        if(enter == 1)
+        {
+            printf("Input the data value : ");
+            sacnf_s("%d",&value);
+            tmp->data = value;
+            tmp->next = LL->tail;
+            LL->head = tmp;
+            LL->cnt++;
+            printf("insert complete\n");
+            exit(1);
+        }
+        else if(enter == 2)
+        {
+            printf("Input the data value : ");
+            sacnf_s("%d",&value);
+            tmp->data = value;
+            tmp->next = NULL;
+            LL->head->next = tmp;
+            LL->tail = tmp;
+            printf("insert complete\n");
+            exit(1);
+        }
+    }
+    else
+    {
+        printf("Which node do you want to insert?\n");
+        while(1)
+        {
+            printf("Enter(1 ~ %d) : ",LL->cnt);
+            scanf_s("%d",&enter);
+            if(enter >= 1 && enter <= LL->cnt)
+                break;
+            else
+                printf("Enter Again(1 ~ %d)",LL->cnt);
+        }
+        if(enter == 1)
+        {
+            printf("Input the data value : ");
+            sacnf_s("%d",&value);
+            tmp->data = value;
+            tmp->next = LL->tail;
+            LL->head = tmp;
+            LL->cnt++;
+            printf("insert complete\n");
+            exit(1);
+        }
+        else
+        {
+            for(i = 1; i < enter - 1; i++)
+            {
+                LL->head = LL->head->next;
+            }
+
+        }
+    }
+
 }
 
 void ll_delete()
