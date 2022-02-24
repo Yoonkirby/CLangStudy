@@ -2,29 +2,29 @@
 #include <stdlib.h>
 void ll_insert(), ll_delete(), ll_update(), ll_print(), ll_exit();
 
-typedef struct NODE
+typedef struct NODE //노드 구조체
 {
     int data;
     struct NODE *next;
 }node;
 
-typedef struct ll
+typedef struct ll   //링크드리스트 구조체
 {
     int index;
     node *head;
     node *tail;
 }linked_list;
 
-linked_list *ll_make()
+linked_list *ll_make()  //링크드리스트 생성 함수
 {
     linked_list *Link = (linked_list *)malloc(sizeof(linked_list));
     Link->index = 0;
-    Link->head = NULL;
+    Link->head = NULL;  //초기화
     Link->tail = NULL;
     return Link;
 }
 
-linked_list *node_make(int data)
+linked_list *node_make(int data)    //노드 생성 함수
 {
     node *Node = (node *)malloc(sizeof(node));
     Node->data = data;
@@ -39,6 +39,9 @@ int main(void)
     printf("Set the initial Value : ");
     scanf_s("%d",&enter); //첫번째 노드의 값을 입력받음
     node *Node = node_make(enter);  //첫번째 노드 생성
+    List->index = 1;
+    List->head = Node;  //첫번째 노드 연결
+    List->tail = Node;
     enter = 0;
     while(1)
     {
@@ -65,6 +68,7 @@ int main(void)
 
 void ll_insert()
 {
+     node *ist = (node *)malloc(sizeof(node));
      
 }
 
