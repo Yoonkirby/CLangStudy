@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-void ll_insert(linked_list *LL), ll_delete(), ll_update(), ll_print(), ll_exit();
+void ll_insert(), ll_delete(), ll_update(), ll_print(), ll_exit();
 
 typedef struct NODE //노드 구조체
 {
@@ -13,6 +13,7 @@ typedef struct ll   //링크드리스트 구조체
     int cnt;
     node *head;
     node *tail;
+    node *cur;
 }linked_list;
 
 linked_list *ll_make()  //링크드리스트 생성 함수
@@ -21,6 +22,7 @@ linked_list *ll_make()  //링크드리스트 생성 함수
     Link->cnt = 0;
     Link->head = NULL;  //초기화
     Link->tail = NULL;
+    Link->cur = NULL;
     return Link;
 }
 
@@ -42,14 +44,14 @@ int main(void)
     List->cnt++;    //카운트 갯수 증가
     List->head = Node;  //헤드, 테일과 커서를 첫번째 노드에 연결
     List->tail = Node;
-    List->csr = Node;
+    List->cur = Node;
     enter = 0;
     while(1)
     {
         printf("Enter [ (1) Insert, (2) Delete, (3) Update, (4) Print, (5) Exit ] : ");
         scanf_s("%d",&enter);
         if(enter == 1)
-            ll_insert(List);
+            ll_insert(List, Node);
         else if(enter == 2)
             ll_delete();
         else if(enter == 3)
@@ -67,11 +69,16 @@ int main(void)
     return 0;
 }
 
-void ll_insert(linked_list *LL)
+void ll_insert(linked_list *LL, node *ND)
 {
-     node *tmp = (node *)malloc(sizeof(node));
-     int i = 0, index = 0, enter = 0, value = 0;
-     if(LL->head == LL->tail)
+    node *tmp = (node *)malloc(sizeof(node));
+    int i = 0, index = 0, enter = 0, value = 0;
+    if(LL->head == NULL || LL->tail == NULL)
+    {
+        printf("error!\n");
+        exit(1);
+    }
+    else if(LL->head == LL->tail)
     {
         printf("What do you want put it in the front or the back of the first node?\n");
         while(1)
@@ -89,7 +96,7 @@ void ll_insert(linked_list *LL)
             printf("Input the data value : ");
             sacnf_s("%d",&value);
             tmp->data = value;
-            tmp->next = LL->tail;
+            tmp->next = ND;
             LL->head = tmp;
             LL->cnt++;
             printf("insert complete\n");
@@ -101,8 +108,9 @@ void ll_insert(linked_list *LL)
             sacnf_s("%d",&value);
             tmp->data = value;
             tmp->next = NULL;
-            LL->head->next = tmp;
-            LL->tail = tmp;
+            ND->next = tmp;
+            LL->tail = tmp; 
+            LL->cnt++;
             printf("insert complete\n");
             exit(1);
         }
@@ -124,7 +132,7 @@ void ll_insert(linked_list *LL)
             printf("Input the data value : ");
             sacnf_s("%d",&value);
             tmp->data = value;
-            tmp->next = LL->tail;
+            tmp->next = ND;
             LL->head = tmp;
             LL->cnt++;
             printf("insert complete\n");
