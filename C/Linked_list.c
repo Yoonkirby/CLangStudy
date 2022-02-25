@@ -132,7 +132,7 @@ void ll_insert(linked_list *LL, node *ND)
             printf("Input the data value : ");
             sacnf_s("%d",&value);
             tmp->data = value;
-            tmp->next = ND;
+            tmp->next = LL->head;
             LL->head = tmp;
             LL->cnt++;
             printf("insert complete\n");
@@ -144,7 +144,7 @@ void ll_insert(linked_list *LL, node *ND)
             {
                 LL->head = LL->head->next;
             }
-
+            //여기서부터 다시 시작하자
         }
     }
 
