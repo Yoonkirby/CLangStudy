@@ -51,7 +51,7 @@ int main(void)
         printf("Enter [ (1) Insert, (2) Delete, (3) Update, (4) Print, (5) Exit ] : ");
         scanf_s("%d",&enter);
         if(enter == 1)
-            ll_insert(List, Node);
+            ll_insert(List);
         else if(enter == 2)
             ll_delete();
         else if(enter == 3)
@@ -64,90 +64,89 @@ int main(void)
             exit(1);
         }
         else
-            printf("Enter Again (1 ~ 5)\n");
+            printf("Enter Again [ 1 ~ 5 ]\n");
     }
     return 0;
 }
 
-void ll_insert(linked_list *LL, node *ND)
+void ll_insert(linked_list *LL)
 {
     node *tmp = (node *)malloc(sizeof(node));
-    int i = 0, index = 0, enter = 0, value = 0;
+    int i = 0, index = 0, fb = 0, value = 0;
+    
     if(LL->head == NULL || LL->tail == NULL)
     {
         printf("error!\n");
         exit(1);
     }
-    else if(LL->head == LL->tail)
-    {
-        printf("What do you want put it in the front or the back of the first node?\n");
-        while(1)
-        {
-            printf("Enter [ (1) front, (2) back ] : ");
-            scanf_s("%d",&enter);
-            if(enter == 1 || enter == 2)
-            {
-                break;
-            }
-            printf("Enter Again(1 or 2)\n");
-        }
-        if(enter == 1)
-        {
-            printf("Input the data value : ");
-            sacnf_s("%d",&value);
-            tmp->data = value;
-            tmp->next = ND;
-            LL->head = tmp;
-            LL->cnt++;
-            printf("insert complete\n");
-            exit(1);
-        }
-        else if(enter == 2)
-        {
-            printf("Input the data value : ");
-            sacnf_s("%d",&value);
-            tmp->data = value;
-            tmp->next = NULL;
-            ND->next = tmp;
-            LL->tail = tmp; 
-            LL->cnt++;
-            printf("insert complete\n");
-            exit(1);
-        }
-    }
-    else
+    else if(LL->head != LL->tail)    //첫노드가 아닐 경우
     {
         printf("Which node do you want to insert?\n");
         while(1)
         {
-            printf("Enter(1 ~ %d) : ",LL->cnt);
-            scanf_s("%d",&enter);
-            if(enter >= 1 && enter <= LL->cnt)
+            printf("Enter [ 1 ~ %d ] : ",LL->cnt);
+            scanf_s("%d",&index);
+            if(index >= 1 && index <= LL->cnt)
                 break;
             else
-                printf("Enter Again(1 ~ %d)",LL->cnt);
+                printf("Error! Enter Again [ 1 ~ %d ]\n",LL->cnt);
         }
-        if(enter == 1)
+    }
+    else    //첫노드일 경우
+    {
+        printf("What do you want put it in the front or the back of the first node?\n");
+    }
+
+    while(1)
+    {
+        printf("Enter [ (1) front, (2) back ] : "); //앞에 넣을지 뒤에 넣을지 입력 받음
+        scanf_s("%d",&fb);
+        if(fb == 1 || fb == 2)
         {
-            printf("Input the data value : ");
-            sacnf_s("%d",&value);
-            tmp->data = value;
+            break;
+        }
+        printf("Enter Again [ 1 or 2 ]\n");
+    }
+    printf("Input the data value : ");  //새로운 노드에 넣을 값를 입력받음
+    sacnf_s("%d",&value);
+    tmp->data = value;
+
+    if(fb == 1) //앞에 넣을 경우
+    {
+        if(index == 1)  //헤드의 앞에 넣을 경우
+        {
             tmp->next = LL->head;
             LL->head = tmp;
             LL->cnt++;
-            printf("insert complete\n");
             exit(1);
         }
-        else
+        for(i = 1; i < index - 1; i++)
         {
-            for(i = 1; i < enter - 1; i++)
-            {
-                LL->head = LL->head->next;
-            }
-            //여기서부터 다시 시작하자
+            LL->cur = LL->cur->next;
         }
+        tmp->next = LL->cur->next;
+        LL->cur->next = tmp;
+        LL->cnt++;
+        exit(1);
     }
-
+    else if(fb == 2)    //뒤에 넣을 경우
+    {
+        for(i = 1; i < index; i++)
+        {
+            LL->cur = LL->cur->next;
+        }
+        if(index == LL->cnt)    //테일의 뒤에 넣을 경우
+        {
+            tmp->next = NULL;
+            LL->cur->next = tmp;
+            LL->tail = tmp;
+            LL->cnt++;
+            exit(1);
+        }
+        tmp->next = LL->cur->next;
+        LL->cur->next = tmp;
+        LL->cnt++;
+    }
 }
 
 void ll_delete()
