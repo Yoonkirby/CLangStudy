@@ -108,7 +108,7 @@ void ll_insert(linked_list *LL)
         printf("Enter Again [ 1 or 2 ]\n");
     }
     printf("Enter the value : ");  //새로운 노드에 넣을 값를 입력받음
-    sacnf_s("%d",&value);
+    scanf_s("%d",&value);
     node *NewNode = node_make(value);   //입력받은 값을 넣은 새로운 노드 생성
 
     if(fb == 1) //앞에 넣을 경우
@@ -235,7 +235,7 @@ void ll_update(linked_list *LL)
 void ll_print(linked_list *LL)
 {
     node *tmp = LL->head;
-    for(int i = 1; i < LL->cnt; i++)
+    for(int i = 0; i < LL->cnt; i++)
     {
         printf("\t%d",tmp->data);
         tmp = tmp->next;
