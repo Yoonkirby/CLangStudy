@@ -34,14 +34,14 @@ linked_list *node_make(int data)    //노드 생성 함수
 
 int main(void)
 {
-    int enter;
+    int enter = 0;
     linked_list *List = ll_make();  //링크드 리스트 생성 및 초기화
 
     printf("Set the initial Value : ");
     scanf_s("%d",&enter); //첫번째 노드의 값을 입력받음
     node *Node = node_make(enter);  //첫번째 노드 생성
     List->cnt++;    //카운트 갯수 증가
-    List->head = Node;  //헤드, 테일과 커서를 첫번째 노드에 연결
+    List->head = Node;  //헤드와 테일을 첫번째 노드에 연결
     List->tail = Node;
 
     enter = 0;
@@ -54,12 +54,12 @@ int main(void)
         else if(enter == 2)
             ll_delete(List);
         else if(enter == 3)
-            ll_update();
+            ll_update(List);
         else if(enter == 4)
-            ll_print();
+            ll_print(List);
         else if(enter == 5)
         {
-            ll_exit();
+            ll_exit(List);
             exit(1);
         }
         else
@@ -76,7 +76,7 @@ void ll_insert(linked_list *LL)
     if(LL->head == NULL || LL->tail == NULL)
     {
         printf("error!\n");
-        exit(1);
+        return;
     }
     else if(LL->head != LL->tail)    //첫노드가 아닐 경우
     {
@@ -107,7 +107,7 @@ void ll_insert(linked_list *LL)
         }
         printf("Enter Again [ 1 or 2 ]\n");
     }
-    printf("Input the data value : ");  //새로운 노드에 넣을 값를 입력받음
+    printf("Enter the value : ");  //새로운 노드에 넣을 값를 입력받음
     sacnf_s("%d",&value);
     node *NewNode = node_make(value);   //입력받은 값을 넣은 새로운 노드 생성
 
@@ -119,7 +119,7 @@ void ll_insert(linked_list *LL)
             LL->head = NewNode;
             LL->cnt++;
             printf("Insert Complete!\n");
-            exit(1);
+            return;
         }
         for(i = 1; i < index - 1; i++)  //대상 노드의 전 노드를 가리키도록함
         {
@@ -138,7 +138,7 @@ void ll_insert(linked_list *LL)
             LL->tail = NewNode;
             LL->cnt++;
             printf("Insert Complete!\n");
-            exit(1);
+            return;
         }
     }
     NewNode->next = tmp->next;
@@ -151,6 +151,13 @@ void ll_delete(linked_list *LL)
 {
     int i = 0, index = 0;
     node *tmp = LL->head;
+    node *prev;
+
+    if(LL->head == LL->tail)
+    {
+        printf("You don't delete last one node!\n");
+        return;
+    }
 
     printf("Which node do you want to delete?\n");
     printf("Enter [ 1 ~ %d ] : ",LL->cnt);
@@ -170,7 +177,7 @@ void ll_delete(linked_list *LL)
         free(tmp);
         LL->cnt--;
         printf("Delete Complete!\n");
-        exit(1);
+        return;
     }
 
     for(i = 1; i < index-1; i++)
@@ -185,26 +192,68 @@ void ll_delete(linked_list *LL)
     }
     else
     {
-        node *tmp2 = tmp;
+        prev = tmp;
         tmp = tmp->next;
-        tmp2->next = tmp->next;
+        prev->next = tmp->next;
     }
     free(tmp);
     LL->cnt--;
     printf("Delete Complete!\n");
 }
 
-void ll_update()
+void ll_update(linked_list *LL)
 {
+    int i = 0, index = 0, value = 0;
+    node *tmp = LL->head;
 
+    if(LL->head != LL->tail)    //노드가 하나가 아닐경우
+    {
+        while(1)
+        {
+            printf("Which node do you want to update?\n");
+            printf("Enter [ 1 ~ %d ] : ",LL->cnt);
+            scanf_s("%d",&index);
+            if(index >= 1 && index <= LL->cnt)
+            {
+                break;
+            }
+            else
+            {
+                printf("Enter Again [ 1 ~ %d ]",LL->cnt);
+            }
+        }
+        for(i = 1; i < index; i++)
+        {
+            tmp = tmp->next;
+        }
+    }
+    printf("Enter the value : ");
+    scanf_s("%d",&value);
+    tmp->data = value;
 }
 
-void ll_print()
+void ll_print(linked_list *LL)
 {
-
+    node *tmp = LL->head;
+    for(int i = 1; i < LL->cnt; i++)
+    {
+        printf("\t%d",tmp->data);
+        tmp = tmp->next;
+    }
+    printf("\n");
 }
 
-void ll_exit()
+void ll_exit(linked_list *LL)
 {
+    node *clear = LL->head;
+    node *tmp = LL->head;
 
+    for(int i = 1; i < LL->cnt; i++)
+    {
+        clear = tmp;
+        tmp = tmp->next;
+        free(clear);
+    }
+    free(tmp);
+    free(LL);
 }
