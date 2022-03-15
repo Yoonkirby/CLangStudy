@@ -15,12 +15,8 @@ public:
     {
         cout<<"name : "<<name<<endl;
     }
-    virtual int GetPay() const
-    {
-        return 0;
-    }
-    virtual void ShowSalaryInfo() const
-    { }
+    virtual int GetPay() const = 0;
+    virtual void ShowSalaryInfo() const = 0;
 };
 
 class PermanentWorker : public Employee
@@ -83,7 +79,6 @@ public:
     {
         return PermanentWorker::GetPay() + (int)(salesResult * bonusRatio);
     }
-    void ShowAllSalaryInfo() { }
 };
 
 namespace RISK_LEVEL
@@ -101,15 +96,15 @@ public:
     ForeignSalesWorker(const char * name, int money, double ratio, int frisk)
         : SalesWorker(name, money, ratio), risk(frisk)
     { }
-    int GetPay() const
-    {
-        return SalesWorker::GetPay() + GetRiskPay();
-    }
     int GetRiskPay() const
     {
         return (int)(SalesWorker::GetPay() * (risk/100.0));
     }
-    void ShowAllSalaryInfo()
+    int GetPay() const
+    {
+        return SalesWorker::GetPay() + GetRiskPay();
+    }
+    void ShowAllSalaryInfo() const
     {
         ShowYourName();
         cout<<"salary : "<<SalesWorker::GetPay()<<endl;
