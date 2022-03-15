@@ -2,24 +2,27 @@
 
 int main(void)
 {
-    int num = 2;
     int PN[10];
+    int num = 2;
     int i = 0;
     int j = 2;
-        
+
     while(i < 10)
     {
-        while(j < num)
+        for(j = 2; j < num; j++)
         {
-            if(num % j != 0)
+            if(num % j == 0)
             {
-                j++;
+                break;
             }
-            
         }
-        PN[i] = num;
+        if(num == j)
+        {
+            PN[i] = num;
+            i++;
+            num++;
+        }
         num++;
-        i++;
     }
 
     for(i = 0; i < 10; i++)
