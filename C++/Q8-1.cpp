@@ -15,8 +15,12 @@ public:
     {
         cout<<"name : "<<name<<endl;
     }
-    virtual int GetPay() const = 0;
-    virtual void ShowSalaryInfo() const = 0;
+    virtual int GetPay() const
+    {
+        return 0;
+    }
+    virtual void ShowSalaryInfo() const
+    { }
 };
 
 class PermanentWorker : public Employee
@@ -104,7 +108,7 @@ public:
     {
         return SalesWorker::GetPay() + GetRiskPay();
     }
-    void ShowAllSalaryInfo() const
+    void ShowSalaryInfo() const
     {
         ShowYourName();
         cout<<"salary : "<<SalesWorker::GetPay()<<endl;
@@ -156,11 +160,11 @@ int main(void)
     handler.AddEmployee(fseller1);
 
     ForeignSalesWorker * fseller2 = new ForeignSalesWorker("Yoon", 1000, 0.1, RISK_LEVEL::RISK_B);
-    fseller1->AddSalesResult(7000); // 영업실적 7000
+    fseller2->AddSalesResult(7000); // 영업실적 7000
     handler.AddEmployee(fseller2);
 
     ForeignSalesWorker * fseller3 = new ForeignSalesWorker("Lee", 1000, 0.1, RISK_LEVEL::RISK_C);
-    fseller1->AddSalesResult(7000); // 영업실적 7000
+    fseller3->AddSalesResult(7000); // 영업실적 7000
     handler.AddEmployee(fseller3);
 
     // 이번 달에 지불해야 할 급여의 정보
