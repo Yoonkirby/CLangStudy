@@ -15,12 +15,8 @@ public:
     {
         cout<<"name : "<<name<<endl;
     }
-    virtual int GetPay() const
-    {
-        return 0;
-    }
-    virtual void ShowSalaryInfo() const
-    { }
+    virtual int GetPay() const = 0;
+    virtual void ShowSalaryInfo() const = 0;
 };
 
 class PermanentWorker : public Employee
