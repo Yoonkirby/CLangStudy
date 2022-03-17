@@ -8,7 +8,7 @@ private:
 public:
     Point(int x = 0, int y = 0) : xpos(x), ypos(y)
     { }
-    Point(Point &copy) : xpos(copy.xpos), ypos(copy.ypos)
+    Point(const Point &copy) : xpos(copy.xpos), ypos(copy.ypos)
     { }
     void ShowPosition() const
     {
@@ -26,7 +26,7 @@ public:
         static Point ref(-xpos, -ypos);
         return ref;
     }
-    friend Point& operator~(Point &ref);
+    friend Point operator~(Point ref);
 };
 
 Point& operator--(Point &ref)
@@ -36,31 +36,25 @@ Point& operator--(Point &ref)
     return ref;
 }
 
-Point& operator~(Point &ref)
+Point operator~(const Point ref)
 {
-    ref.xpos = ~ref.xpos;
-    ref.ypos = ~ref.ypos;
-    return ref;
+    Point pos(ref.ypos, ref.xpos);
+    return pos;
 }
 
 int main(void)
 {
     Point pos(1, 2);
-    ++pos;
-    pos.ShowPosition();
-    --pos;
-    pos.ShowPosition();
+    (++pos).ShowPosition();
+    (--pos).ShowPosition();
 
-    ++(++pos);
-    pos.ShowPosition();
-    --(--pos);
-    pos.ShowPosition();
+    (++(++pos)).ShowPosition();
+    (--(--pos)).ShowPosition();
 
     Point pos2 = -pos;
     pos2.ShowPosition();
 
-    Point pos3(1, 0);
-    ~pos3;
-    pos3.ShowPosition();
+    (~pos).ShowPosition();
+    pos2.ShowPosition();
     return 0;
 }
