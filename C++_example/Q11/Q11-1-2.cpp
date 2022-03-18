@@ -17,17 +17,17 @@ public:
         strcpy(title, btitle);
         strcpy(isbn, bisbn);
     }
-    Book(const Book & copy) : price(copy.price)
+    Book(const Book& copy) : price(copy.price)
     {
-        title = new char[copy.titlelen()];
-        isbn = new char[copy.isbnlen()];
+        title = new char[strlen(copy.title)+1];
+        isbn = new char[strlen(copy.isbn)+1];
         strcpy(title, copy.title);
         strcpy(isbn, copy.isbn);
     }
-    Book & operator=(const Book & copy)
+    Book& operator=(const Book& copy)
     {
-        title = new char[copy.titlelen()];
-        isbn = new char[copy.isbnlen()];
+        title = new char[strlen(copy.title)+1];
+        isbn = new char[strlen(copy.isbn)+1];
         strcpy(title, copy.title);
         strcpy(isbn, copy.isbn);
         price = copy.price;
@@ -37,14 +37,6 @@ public:
         cout<<"title : "<<title<<endl;
         cout<<"ISBN : "<<isbn<<endl;
         cout<<"price : "<<price<<endl;
-    }
-    int titlelen() const
-    {
-        return strlen(title)+1;
-    }
-    int isbnlen() const
-    {
-        return strlen(isbn)+1;
     }
     ~Book()
     {
@@ -64,25 +56,21 @@ public:
         DRMKey = new char[strlen(ebDRMKey)+1];
         strcpy(DRMKey, ebDRMKey);
     }
-    EBook(const EBook & copy) : Book(copy)
+    EBook(const EBook& copy) : Book(copy)
     {
-        DRMKey = new char[copy.DRMKeylen()];
+        DRMKey = new char[strlen(copy.DRMKey)+1];
         strcpy(DRMKey,copy.DRMKey);
     }
-    EBook & operator=(const EBook & copy)
+    EBook& operator=(const EBook& copy)
     {
         Book::operator=(copy);
-        DRMKey = new char[copy.DRMKeylen()];
+        DRMKey = new char[strlen(copy.DRMKey)+1];
         strcpy(DRMKey,copy.DRMKey);
     }
     void ShowEBookInfo() const
     {
         ShowBookInfo();
         cout<<"DRMKey : "<<DRMKey<<endl;
-    }
-    int DRMKeylen() const
-    {
-        return strlen(DRMKey)+1;
     }
     ~EBook()
     {
