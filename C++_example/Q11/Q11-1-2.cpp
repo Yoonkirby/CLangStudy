@@ -17,11 +17,34 @@ public:
         strcpy(title, btitle);
         strcpy(isbn, bisbn);
     }
-    void ShowBookInfo()
+    Book(const Book & copy) : price(copy.price)
+    {
+        title = new char[copy.titlelen()];
+        isbn = new char[copy.isbnlen()];
+        strcpy(title, copy.title);
+        strcpy(isbn, copy.isbn);
+    }
+    Book & operator=(const Book & copy)
+    {
+        title = new char[copy.titlelen()];
+        isbn = new char[copy.isbnlen()];
+        strcpy(title, copy.title);
+        strcpy(isbn, copy.isbn);
+        price = copy.price;
+    }
+    void ShowBookInfo() const
     {
         cout<<"title : "<<title<<endl;
         cout<<"ISBN : "<<isbn<<endl;
         cout<<"price : "<<price<<endl;
+    }
+    int titlelen() const
+    {
+        return strlen(title)+1;
+    }
+    int isbnlen() const
+    {
+        return strlen(isbn)+1;
     }
     ~Book()
     {
@@ -41,10 +64,25 @@ public:
         DRMKey = new char[strlen(ebDRMKey)+1];
         strcpy(DRMKey, ebDRMKey);
     }
-    void ShowEBookInfo()
+    EBook(const EBook & copy) : Book(copy)
+    {
+        DRMKey = new char[copy.DRMKeylen()];
+        strcpy(DRMKey,copy.DRMKey);
+    }
+    EBook & operator=(const EBook & copy)
+    {
+        Book::operator=(copy);
+        DRMKey = new char[copy.DRMKeylen()];
+        strcpy(DRMKey,copy.DRMKey);
+    }
+    void ShowEBookInfo() const
     {
         ShowBookInfo();
         cout<<"DRMKey : "<<DRMKey<<endl;
+    }
+    int DRMKeylen() const
+    {
+        return strlen(DRMKey)+1;
     }
     ~EBook()
     {
@@ -59,5 +97,13 @@ int main(void)
     cout<<endl;
     EBook ebook("Good C++ ebook", "555-12345-890-1", 10000, "fdx9w0i8kiw");
     ebook.ShowEBookInfo();
+    cout<<endl<<endl;
+
+    EBook nebook = ebook;
+    nebook.ShowEBookInfo();
+    cout<<endl;
+    EBook cebook("Bad C++ ebook", "666-13579-111-3", 5000, "9fqwf58v7a");
+    nebook = cebook;
+    nebook.ShowEBookInfo();
     return 0;
 }
