@@ -80,7 +80,7 @@
             "group": "test",
             "args": [
                 "/C",
-                "${fileDirname}\\${fileBasenameNoExtension}"
+                "${fileDirname}/${fileBasenameNoExtension}"
             ]
     
         }
