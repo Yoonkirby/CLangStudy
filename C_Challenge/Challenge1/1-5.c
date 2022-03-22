@@ -1,3 +1,4 @@
+// 10개의 소수(Prime Number)를 출력하는 프로그램 작성
 #include <stdio.h>
 
 int main(void)

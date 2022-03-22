@@ -1,3 +1,4 @@
+// 초(second)를 입력 받은 후, 이를 [시, 분, 초]의 형태로 출력하는 프로그램 작성
 #include <stdio.h>
 
 int main(void)

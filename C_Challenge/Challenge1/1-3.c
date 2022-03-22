@@ -1,3 +1,5 @@
+// 두 개의 정수를 입력 받아 최대 공약수(GCD)를 구하는 프로그램을 작성
+// 유클리드 호제법
 #include <stdio.h>
 
 int GCD(int num1, int num2) //큰숫자가 왼쪽으로 감

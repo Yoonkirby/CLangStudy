@@ -1,3 +1,4 @@
+// 2의 n승을 구하는 함수를 재귀적으로 구현
 #include <stdio.h>
 
 int square(int num)
