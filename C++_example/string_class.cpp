@@ -32,7 +32,7 @@ String::String(const char * ref) : len(strlen(ref)+1)
 }
 String::String(const String& ref)
 {
-    len = ref.len;
+    len = ref.len; 
     str = new char[len];
     strcpy(str, ref.str);
 }
