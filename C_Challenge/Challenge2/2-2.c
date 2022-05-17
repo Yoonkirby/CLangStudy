@@ -1,3 +1,4 @@
+// 10진수 형태로 정수하나를 입력받고 2진수로 변환해서 출력
 #include <stdio.h>
 
 int main(void)
