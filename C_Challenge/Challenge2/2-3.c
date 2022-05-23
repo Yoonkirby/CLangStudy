@@ -5,9 +5,18 @@
 int main(void)
 {
     int enter[10];
-    int i = 0, j = 10;
-
-
+    int front = 0, back = 9, temp = 0;
+    for(int i = 0; i < 10; i++)
+    {
+        printf("Enter %d : ", i+1);
+        scanf("%d", &temp);
+        if(temp % 2 == 1)
+            enter[front++] = temp;
+        else
+            enter[back--] = temp;
+    }
+    for(int i = 0; i < 10; i++)
+        printf("%d ", enter[i]);
 
     return 0;
 }
