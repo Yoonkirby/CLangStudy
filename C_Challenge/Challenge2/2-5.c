@@ -4,8 +4,41 @@
 // 마지막으로 확인을 위해 배열의 요소들을 순서대로 출력
 #include <stdio.h>
 
+int len = 7;
+
+void DesSort(int * arr)
+{
+    int tmp = 0;
+    for(int i = len-1; i > 0; i--)
+    {
+        for(int j = 0; j < i; j++)
+        {
+            if(arr[j] > arr[j+1])
+            {
+                tmp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = tmp;
+            }
+        }
+    }
+}
+
 int main(void)
 {
+    int arr[len];
+    for(int i = 0; i < len; i++)
+    {
+        printf("Enter %d : ", i+1);
+        scanf("%d",&arr[i]);
+    }
+
+    DesSort(arr);
+
+    for(int i = 0; i < len; i++)
+    {
+        printf("%d ",arr[i]);
+    }
+    printf("\n");
 
     return 0;
 }
