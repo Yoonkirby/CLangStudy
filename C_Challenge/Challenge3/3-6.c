@@ -14,7 +14,42 @@
 int main(void)
 {
     srand(time(NULL));
-
-    
+    int pc[3];
+    int enter[3];
+    int strike, ball, i, j, cnt = 0;
+    for(i = 0; i < 3; i++)
+        pc[i] = rand() % 10;
+    printf("Start Game!\n");
+    while(1)
+    {
+        printf("Enter : ");
+        scanf_s("%d %d %d", &enter[0], &enter[1], &enter[2]);
+        strike = 0;
+        ball = 0;
+        for(i = 0; i < 3; i++)
+        {
+            if(pc[i] == enter[i])
+                strike++;
+        }
+        for(i = 0; i < 3; i++)
+        {
+            for(j = 0; j < 3; j++)
+            {
+                if(i == j)
+                    continue;
+                else
+                {
+                    if(pc[i] == enter[j])
+                        ball++;
+                }
+            }
+        }
+        cnt++;
+        printf("Result : %dStrike, %dBall!\n", strike, ball);
+        if(strike == 3)
+            break;
+    }
+    printf("You got the answer in %d tries\n");
+    printf("End Game\n");
     return 0;
 }
