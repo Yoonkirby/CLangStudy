@@ -24,18 +24,29 @@ int main(void)
         scanf_s("%s", tmp);
         temp[i] = strlen(tmp)+1;
         book[i]->author = (char *)malloc(sizeof(char)*temp[i]);
-        printf("Author : %s\n", book[i]->author);
+        if(book[i]->author == NULL)
+        {
+            exit(1);
+        }
         strcpy(book[i]->author, tmp);
         
         printf("Enter Title : ");
         scanf_s("%s", tmp);
         temp[i] = strlen(tmp)+1;
         book[i]->title = (char *)malloc(sizeof(char)*temp[i]);
+        if(book[i]->title == NULL)
+        {
+            exit(1);
+        }
         strcpy(book[i]->title, tmp);
         
         printf("Enter Pages : ");
         scanf_s("%d", temp);
         book[i]->page = (int *)malloc(sizeof(int));
+        if(book[i]->page == NULL)
+        {
+            exit(1);
+        }
         book[i]->page = &temp[i];
         
         if(book[i]->author == NULL || book[i]->title == NULL || book[i]->page == NULL)
