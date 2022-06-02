@@ -84,42 +84,38 @@ void MakeAccount(void)
 
 void DepositMoney(void)
 {
-    int id, bal;
+    int i, id, bal;
     cout<<"[Deposit]"<<endl;
     cout<<"Enter Your ID : "; cin>>id;
-    for(int i = 0; i < accNum; i++)
+    for(i = 0; i < accNum; i++)
     {
         if(acc[i].accID == id)
         {
             cout<<"Deposit amount : "; cin>>bal;
             acc[i].balance += bal;
             cout<<"Deposit Complete"<<endl<<endl;
-        }
-        else
-        {
-            cout<<"ID Not Found"<<endl<<endl;
+            return;
         }
     }
+    cout<<"ID Not Found"<<endl<<endl;
 }
 
 void WithdrawalMoney(void)
 {
-    int id, bal;
+    int i, id, bal;
     cout<<"[Withdrawal]"<<endl;
     cout<<"Enter Your ID : "; cin>>id;
-    for(int i = 0; i < accNum; i++)
+    for(i = 0; i < accNum; i++)
     {
         if(acc[i].accID == id)
         {
             cout<<"Withdrawal amount : "; cin>>bal;
             acc[i].balance -= bal;
             cout<<"Withdrawal Complete"<<endl<<endl;
-        }
-        else
-        {
-            cout<<"ID Not Found"<<endl<<endl;
+            return;
         }
     }
+    cout<<"ID Not Found"<<endl<<endl;
 }
 
 void ShowAllAccInfo(void)
@@ -128,6 +124,6 @@ void ShowAllAccInfo(void)
     {
         cout<<"Account ID : "<<acc[i].accID<<endl;
         cout<<"Name : "<<acc[i].cusName<<endl;
-        cout<<"Current Balance : "<<acc[i].balance<<endl;
+        cout<<"Current Balance : "<<acc[i].balance<<endl<<endl;
     }
 }
