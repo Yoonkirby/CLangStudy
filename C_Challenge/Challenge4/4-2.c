@@ -12,16 +12,16 @@ typedef struct Book
     int * page;
 }BOOK;
 
-int main(void)
+int main(void) 
 {
     BOOK * book[3];
     int i, temp[3];
-    char tmp[100];
+    char tmp[50];
     printf("Enter Book Information\n");
     for(i = 0; i < 3; i++)
     {
         printf("Enter Author : ");
-        scanf_s("%s", tmp);
+        scanf("%s", tmp);
         temp[i] = strlen(tmp)+1;
         book[i]->author = (char *)malloc(sizeof(char)*temp[i]);
         if(book[i]->author == NULL)
@@ -31,7 +31,7 @@ int main(void)
         strcpy(book[i]->author, tmp);
         
         printf("Enter Title : ");
-        scanf_s("%s", tmp);
+        scanf("%s", tmp);
         temp[i] = strlen(tmp)+1;
         book[i]->title = (char *)malloc(sizeof(char)*temp[i]);
         if(book[i]->title == NULL)
@@ -41,7 +41,7 @@ int main(void)
         strcpy(book[i]->title, tmp);
         
         printf("Enter Pages : ");
-        scanf_s("%d", temp);
+        scanf("%d", temp);
         book[i]->page = (int *)malloc(sizeof(int));
         if(book[i]->page == NULL)
         {
