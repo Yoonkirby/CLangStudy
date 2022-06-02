@@ -86,7 +86,7 @@ void DepositMoney(void)
 {
     int id, bal;
     cout<<"[Deposit]"<<endl;
-    cout<<"Enter Your ID"; cin>>id;
+    cout<<"Enter Your ID : "; cin>>id;
     for(int i = 0; i < accNum; i++)
     {
         if(acc[i].accID == id)
@@ -96,7 +96,9 @@ void DepositMoney(void)
             cout<<"Deposit Complete"<<endl<<endl;
         }
         else
+        {
             cout<<"ID Not Found"<<endl<<endl;
+        }
     }
 }
 
@@ -104,7 +106,7 @@ void WithdrawalMoney(void)
 {
     int id, bal;
     cout<<"[Withdrawal]"<<endl;
-    cout<<"Enter Your ID"; cin>>id;
+    cout<<"Enter Your ID : "; cin>>id;
     for(int i = 0; i < accNum; i++)
     {
         if(acc[i].accID == id)
@@ -114,7 +116,9 @@ void WithdrawalMoney(void)
             cout<<"Withdrawal Complete"<<endl<<endl;
         }
         else
+        {
             cout<<"ID Not Found"<<endl<<endl;
+        }
     }
 }
 
