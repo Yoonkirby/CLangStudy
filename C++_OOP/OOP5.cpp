@@ -168,7 +168,8 @@ void AccountHandler::ShowAllAccInfo(void) const
 
 AccountHandler::~AccountHandler()
 {
-    delete []acc;
+    for(int i = 0; i < accNum; i++)
+        delete acc[i];
 }
 
 int main(void)

@@ -84,7 +84,8 @@ int main(void)
                 ShowAllAccInfo();
                 break;
             case Exit:
-                delete []acc;
+                for(int i = 0; i < accNum; i++)
+                    delete acc[i];
                 exit(0);
             default:
                 cout<<"Invalid Enter"<<endl<<endl;
