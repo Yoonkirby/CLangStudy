@@ -96,8 +96,8 @@ class AccountHandler
         ~AccountHandler();
 };
 
-AccountHandler::AccountHandler()
-    : accNum(0) {}
+AccountHandler::AccountHandler() : accNum(0)
+{ }
 
 void AccountHandler::ShowMenu(void) const
 {
