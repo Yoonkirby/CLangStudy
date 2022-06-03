@@ -1,3 +1,8 @@
+/*
+ * Banking System Ver 0.3
+ * 작성자 : 윤성준
+ * 내용 : 깊은 복사를 원칙으로 복사 생성자 추가
+ */
 #include <iostream>
 #include <cstring>
 

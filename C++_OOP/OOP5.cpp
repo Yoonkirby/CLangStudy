@@ -1,7 +1,7 @@
 /*
- * Banking System Ver 0.4
+ * Banking System Ver 0.5
  * 작성자 : 윤성준
- * 내용 : const로 선언이 가능한 모든 멤버함수를 const로 선언
+ * 내용 : AccountHandler라는 이름의 컨트롤 클래스 정의
  */
 #include <iostream>
 #include <cstring>
@@ -17,6 +17,11 @@ void ShowAllAccInfo(void);  // 잔액조회
 
 enum {Make = 1, Deposit, Withdrawal, ShowAll, Exit};
 
+
+/*
+ * 클래스 이름 : Account
+ * 클래스 유형 : Entity 클래스
+ */
 class Account
 {
     private:
@@ -24,39 +29,64 @@ class Account
         int balance;    // 잔액
         char * cusName; // 고객이름
     public:
-        Account(int ID, int money, char * name)
-            : accID(ID), balance(money)
-        {
-            cusName = new char[strlen(name)+1];
-            strcpy(cusName, name);
-        }
-        Account(const Account & copy)
-            : accID(copy.accID), balance(copy.balance)
-        {
-            cusName = new char[strlen(copy.cusName)+1];
-            strcpy(cusName, copy.cusName);
-        }
-        int ShowID() const
-        {return accID;}
-        void Deposit(int money)
-        {balance += money;}
-        int Withdrawal(int money)
-        {
-            if(balance < money)
-                return 0;
-
-            balance -= money;
-            return money;
-        }
-        void ShowAccInfo() const
-        {
-            cout<<"Account ID : "<<accID<<endl;
-            cout<<"Name : "<<cusName<<endl;
-            cout<<"Current Balance : "<<balance<<endl<<endl;
-        }
-        ~Account()
-        {delete []cusName;}
+        Account(int ID, int money, char * name);
+        Account(const Account & copy);
+        int ShowID() const;
+        void Deposit(int money);
+        int Withdrawal(int money);
+        void ShowAccInfo() const;
+        ~Account();
 };
+
+Account::Account(int ID, int money, char * name)
+    : accID(ID), balance(money)
+{
+    cusName = new char[strlen(name)+1];
+    strcpy(cusName, name);
+}
+
+Account::Account(const Account & copy)
+    : accID(copy.accID), balance(copy.balance)
+{
+    cusName = new char[strlen(copy.cusName)+1];
+    strcpy(cusName, copy.cusName);
+}
+
+int Account::ShowID() const
+{
+    return accID;
+}
+
+void Account::Deposit(int money)
+{
+    balance += money;
+}
+
+int Account::Withdrawal(int money)
+{
+    if(balance < money)
+        return 0;
+
+    balance -= money;
+    return money;
+}
+
+void Account::ShowAccInfo() const
+{
+    cout<<"Account ID : "<<accID<<endl;
+    cout<<"Name : "<<cusName<<endl;
+    cout<<"Current Balance : "<<balance<<endl<<endl;
+}
+
+Account::~Account()
+{
+    delete []cusName;
+}
+
+/*
+ * 클래스 이름 : AccountHandler
+ * 클래스 유형 : 컨트롤(Control) 클래스
+ */
 
 Account * acc[100];
 int accNum = 0;
