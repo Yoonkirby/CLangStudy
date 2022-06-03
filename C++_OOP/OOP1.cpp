@@ -1,3 +1,8 @@
+/*
+ * Banking System Ver 0.1
+ * 작성자 : 윤성준
+ * 내용 : OOP 단계별 프로젝트의 기본 틀 구성
+ */
 #include <iostream>
 #include <cstring>
 

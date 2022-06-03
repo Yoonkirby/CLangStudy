@@ -9,12 +9,6 @@
 using namespace std;
 const int NAME_LEN = 20;
 
-void ShowMenu(void);        // 메뉴출력
-void MakeAccount(void);     // 계좌개설
-void DepositMoney(void);    // 입   금
-void WithdrawalMoney(void);   // 출   금
-void ShowAllAccInfo(void);  // 잔액조회
-
 enum {Make = 1, Deposit, Withdrawal, ShowAll, Exit};
 
 
@@ -87,43 +81,25 @@ Account::~Account()
  * 클래스 이름 : AccountHandler
  * 클래스 유형 : 컨트롤(Control) 클래스
  */
-
-Account * acc[100];
-int accNum = 0;
-
-int main(void)
+class AccountHandler
 {
-    int enter = 0;
-    while(1)
-    {
-        ShowMenu();
-        cout<<"Enter(1~5) : "; cin>>enter;
-        cout<<endl;
-        switch(enter)
-        {
-            case Make:
-                MakeAccount();
-                break;
-            case Deposit:
-                DepositMoney();
-                break;
-            case Withdrawal:
-                WithdrawalMoney();
-                break;
-            case ShowAll:
-                ShowAllAccInfo();
-                break;
-            case Exit:
-                delete []acc;
-                exit(0);
-            default:
-                cout<<"Invalid Enter"<<endl<<endl;
-        }
-    }
-    return 0;
-}
+    private:
+        Account * acc[100];
+        int accNum;
+    public:
+        AccountHandler();
+        void ShowMenu(void) const;        // 메뉴출력
+        void MakeAccount(void);           // 계좌개설
+        void DepositMoney(void);          // 입   금
+        void WithdrawalMoney(void);       // 출   금
+        void ShowAllAccInfo(void) const;  // 잔액조회
+        ~AccountHandler();
+};
 
-void ShowMenu(void)
+AccountHandler::AccountHandler()
+    : accNum(0) {}
+
+void AccountHandler::ShowMenu(void) const
 {
     cout<<"-----------MENU-----------"<<endl;
     cout<<"1. Make a Account"<<endl;
@@ -133,7 +109,7 @@ void ShowMenu(void)
     cout<<"5. Program Exit"<<endl;
 }
 
-void MakeAccount(void)
+void AccountHandler::MakeAccount(void)
 {
     int id;
     char name[NAME_LEN];
@@ -144,7 +120,7 @@ void MakeAccount(void)
     acc[accNum++] = new Account(id, 0, name);
 }
 
-void DepositMoney(void)
+void AccountHandler::DepositMoney(void)
 {
     int id, bal;
     cout<<"[Deposit]"<<endl;
@@ -162,7 +138,7 @@ void DepositMoney(void)
     cout<<"ID Not Found"<<endl<<endl;
 }
 
-void WithdrawalMoney(void)
+void AccountHandler::WithdrawalMoney(void)
 {
     int id, bal;
     cout<<"[Withdrawal]"<<endl;
@@ -182,10 +158,47 @@ void WithdrawalMoney(void)
     cout<<"ID Not Found"<<endl<<endl;
 }
 
-void ShowAllAccInfo(void)
+void AccountHandler::ShowAllAccInfo(void) const
 {
     for(int i = 0; i < accNum; i++)
     {
         acc[i]->ShowAccInfo();
     }
+}
+
+AccountHandler::~AccountHandler()
+{
+    delete []acc;
+}
+
+int main(void)
+{
+    AccountHandler handler;
+    int enter = 0;
+    while(1)
+    {
+        handler.ShowMenu();
+        cout<<"Enter(1~5) : "; cin>>enter;
+        cout<<endl;
+        switch(enter)
+        {
+            case Make:
+                handler.MakeAccount();
+                break;
+            case Deposit:
+                handler.DepositMoney();
+                break;
+            case Withdrawal:
+                handler.WithdrawalMoney();
+                break;
+            case ShowAll:
+                handler.ShowAllAccInfo();
+                break;
+            case Exit:
+                exit(0);
+            default:
+                cout<<"Invalid Enter"<<endl<<endl;
+        }
+    }
+    return 0;
 }
