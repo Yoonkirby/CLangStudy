@@ -33,7 +33,7 @@ class Account
         Account(const Account & copy);
         int GetID() const;
         int GetBalance() const;
-        void Deposit(int money);
+        virtual void Deposit(int money);
         int Withdrawal(int money);
         void ShowAccInfo() const;
         ~Account();
@@ -96,19 +96,20 @@ Account::~Account()
 class NormalAccount : public Account
 {
     private:
-        double interest;    // 이자율
+        int interest;    // 이자율
     public:
-        NormalAccount(int ID, int money, char * name, double inter)
+        NormalAccount(int ID, int money, char * name, int inter)
             : Account(ID, money, name), interest(inter) { }
-        double GetInterest() const
+        int GetInterest() const
         {
             return interest;
         }
-        void InterestPayment()
+        void Deposit(int money)
         {
             int principal;
             principal = GetBalance();
-            //여기까지함
+            principal *= (0.01 * interest);
+            Account::Deposit(money + principal);
         }
 };
 
@@ -121,11 +122,14 @@ class HighCreditAccount : public NormalAccount
     private:
         int credit;
     public:
-        HighCreditAccount(int ID, int money, char * name, double inter, int cred)
+        HighCreditAccount(int ID, int money, char * name, int inter, int cred)
             : NormalAccount(ID, money, name, inter), credit(cred) { }
-        int GetCredit() const
+        void Deposit(int money)
         {
-            return credit;
+            int principal;
+            principal = GetBalance();
+            principal *= (0.01 * (GetInterest() + credit));
+            Account::Deposit(money + principal);
         }
 };
 
@@ -163,27 +167,63 @@ void AccountHandler::ShowMenu(void) const
 
 void AccountHandler::MakeAccount(void)
 {
-    int id, bal;
+    int enter, id, money, interest;
     char name[NAME_LEN];
-    cout<<"Enter ID : "; cin>>id;
-    cout<<"Enter Name : "; cin>>name;
-    cout<<"Deposit amount : "; cin>>bal;
-    cout<<endl;
-
-    acc[accNum++] = new Account(id, bal, name);
+    while(1)
+    {
+        cout<<"[Select Account Type]"<<endl;
+        cout<<"1. Normal Account  2. High Credit Account"<<endl;
+        cout<<"Enter(1 ~ 2) : "; cin>>enter;
+        cout<<"Enter ID : "; cin>>id;
+        cout<<"Enter Name : "; cin>>name;
+        cout<<"Deposit amount : "; cin>>money;
+        cout<<"Interest Rate : "; cin>>interest;
+        if(enter == 1)
+        {
+            cout<<endl;
+            acc[accNum++] = new NormalAccount(id, money, name, interest);
+            break;
+        }
+        else if(enter == 2)
+        {
+            int credit;
+            while(1)
+            {
+                cout<<"Credit Rate(A = 1, B = 2, C = 3) : "; cin>>credit;
+                cout<<endl;
+                if(credit >= 1 && credit <= 3)
+                    break;
+                cout<<"Invalid Enter"<<endl<<endl;
+            }
+            switch(credit)
+            {
+                case 1:
+                    credit = LEVEL_A;
+                    break;
+                case 2:
+                    credit = LEVEL_B;
+                    break;
+                case 3:
+                    credit = LEVEL_C;
+            }
+            acc[accNum++] = new HighCreditAccount(id, money, name, interest, credit);
+            break;
+        }
+        cout<<"Invalid Enter"<<endl<<endl;
+    }
 }
 
 void AccountHandler::DepositMoney(void)
 {
-    int id, bal;
+    int id, money;
     cout<<"[Deposit]"<<endl;
     cout<<"Enter Your ID : "; cin>>id;
     for(int i = 0; i < accNum; i++)
     {
         if(acc[i]->GetID() == id)
         {
-            cout<<"Deposit amount : "; cin>>bal;
-            acc[i]->Deposit(bal);
+            cout<<"Deposit amount : "; cin>>money;
+            acc[i]->Deposit(money);
             cout<<"Deposit Complete"<<endl<<endl;
             return;
         }
@@ -193,15 +233,15 @@ void AccountHandler::DepositMoney(void)
 
 void AccountHandler::WithdrawalMoney(void)
 {
-    int id, bal;
+    int id, money;
     cout<<"[Withdrawal]"<<endl;
     cout<<"Enter Your ID : "; cin>>id;
     for(int i = 0; i < accNum; i++)
     {
         if(acc[i]->GetID() == id)
         {
-            cout<<"Withdrawal amount : "; cin>>bal;
-            if(acc[i]->Withdrawal(bal) == 0)
+            cout<<"Withdrawal amount : "; cin>>money;
+            if(acc[i]->Withdrawal(money) == 0)
                 cout<<"Insufficient Balance"<<endl;
             else
                 cout<<"Withdrawal Complete"<<endl<<endl;
