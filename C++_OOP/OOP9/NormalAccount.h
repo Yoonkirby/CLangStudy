@@ -1,7 +1,7 @@
 /*
  * 파일이름 : NormalAccount.h
  * 작성자 : 윤성준
- * 업데이트 정보 : [2022, 06, 07] 파일버전 0.7
+ * 업데이트 정보 : [2022, 06, 07] 파일버전 0.9
  */
 #ifndef __NORMAL_ACCOUNT_H__
 #define __NORMAL_ACCOUNT_H__
