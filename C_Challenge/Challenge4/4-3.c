@@ -5,8 +5,40 @@
 // 복소수의 곱셈공식 : (a+bi) * (c+di) = ac - bd + bci + adi
 #include <stdio.h>
 
+typedef struct Complex
+{
+    double actual;
+    double imaginary;
+}ComplexNum;
+
+ComplexNum ComplexAdd(ComplexNum num1, ComplexNum num2)
+{
+    ComplexNum result;
+    result.actual = num1.actual + num2.actual;
+    result.imaginary =  num1.imaginary + num2.imaginary;
+    return result;
+}
+
+ComplexNum ComplexMulti(ComplexNum num1, ComplexNum num2)
+{
+    ComplexNum result;
+    result.actual = num1.actual * num2.actual - num1.imaginary * num2.imaginary;
+    result.imaginary = num1.imaginary * num2.actual + num1.actual * num2.imaginary;
+    return result;
+}
+
 int main(void)
 {
+    ComplexNum num1, num2, add, multi;
 
+    printf("Enter Complex Number 1[Actual Imaginary] : ");
+    scanf("%lf %lf", &num1.actual, &num1.imaginary);
+    printf("Enter Complex Number 2[Actual Imaginary] : ");
+    scanf("%lf %lf", &num2.actual, &num2.imaginary);
+
+    add = ComplexAdd(num1, num2);
+    printf("Add Result] Actual : %f, Imaginary : %f\n", add.actual, add.imaginary);
+    multi = ComplexMulti(num1, num2);
+    printf("Multiplication Result] Actual : %f, Imaginary : %f\n", multi.actual, multi.imaginary);
     return 0;
 }

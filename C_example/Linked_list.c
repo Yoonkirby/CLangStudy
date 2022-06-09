@@ -15,18 +15,28 @@ typedef struct ll   //링크드리스트 구조체
     node *tail;
 }linked_list;
 
-linked_list *ll_make()  //링크드리스트 생성 및 초기화 함수
+linked_list* ll_make()  //링크드리스트 생성 및 초기화 함수
 {
     linked_list *Link = (linked_list *)malloc(sizeof(linked_list));
+    if(Link == NULL)
+    {
+        printf("Dynamic Allocation Failed\n");
+        exit(1);
+    }
     Link->cnt = 0;
     Link->head = NULL;  //초기화
     Link->tail = NULL;
     return Link;
 }
 
-linked_list *node_make(int data)    //노드 생성 함수
+linked_list* node_make(int data)    //노드 생성 함수
 {
     node *Node = (node *)malloc(sizeof(node));
+    if(Node == NULL)
+    {
+        printf("Dynamic Allocation Failed\n");
+        exit(1);
+    }
     Node->data = data;
     Node->next = NULL;
     return Node;
@@ -60,7 +70,7 @@ int main(void)
         else if(enter == 5)
         {
             ll_exit(List);
-            exit(1);
+            exit(0);
         }
         else
             printf("Enter Again [ 1 ~ 5 ]\n");
