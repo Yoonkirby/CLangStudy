@@ -1,7 +1,5 @@
 // 전화번호 관리 프로그램을 작성 p.606
 // 그런대 링크드리스트를 버무린
-
-//scanf를 gets로 바꿔야할듯? 런타임에러뜸
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -59,7 +57,7 @@ int Phone_Index(LL * link, char * name) // 동일한 이름이 몇번째 노드�
     PHONE * tmp = link->head;
     for(int i = 1; i <= link->cnt; i++)
     {
-        if(tmp->name == name)
+        if(strcmp(tmp->name, name) == 0)
         {
             return i;
         }
