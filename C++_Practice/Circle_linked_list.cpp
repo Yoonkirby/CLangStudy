@@ -43,12 +43,13 @@ class Circle_Queue
             node * tmp = new node(data);
             if(size == 0){
                 front = tmp;
+                back = tmp;
             }
             else{
-                tmp->next = front;
                 back->next = tmp;
+                back = tmp;
+                tmp->next = front;
             }
-            back = tmp;
             size++;
         }
         int ll_delete()
@@ -100,17 +101,15 @@ class Circle_Queue
                 delete tmp;
                 tmp = front;
             }
-            cout<<"bye bye"<<endl;
         }
 };
 
 int main(void)
 {
-    Circle_Queue * Q = new Circle_Queue(1);
+    Circle_Queue * Q = new Circle_Queue(0);
     Q->ShowAll();
 
-    Q->ll_insert(2);
-    for(int i = 3; i <= 10; i++){
+    for(int i = 1; i <= 10; i++){
         Q->ll_insert(i);
     }
     Q->ShowAll();
@@ -118,14 +117,14 @@ int main(void)
     cout<<endl<<"Homp Homp <"<<Q->ll_delete()<<">"<<endl<<endl;    
     Q->ShowAll();
 
-    // Q->ll_Turn();
-    // Q->ShowAll();
+    Q->ll_Turn();
+    Q->ShowAll();
 
-    // Q->ll_Turn();
-    // Q->ShowAll();
+    Q->ll_Turn();
+    Q->ShowAll();
 
-    // Q->ll_Turn();
-    // Q->ShowAll();
+    Q->ll_Turn();
+    Q->ShowAll();
 
     delete Q;
     return 0;
