@@ -1,5 +1,6 @@
 // 0 이상 99 이하의 난수를 총 5개 생성
 #include <stdio.h>
+#include <stdlib.h>
 
 int main(void)
 {
