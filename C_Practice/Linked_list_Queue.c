@@ -96,7 +96,7 @@ void enqueue(Q_LIST * list)
 
 int dequeue(Q_LIST * list)
 {
-    if(list->size <= 0){
+    if(list->size <= 0){            // 큐가 비었을때
         printf("\nQueue is Empty\n\n");
         return 0;
     }
